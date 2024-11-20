@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande | Pizzeria Felicio</title>
+</head>
+<body>
+    <form action="/validationPizza" method="post">
+        <!-- Informations de contact -->
+        <fieldset id=infoContact>
+            <legend>Informations de contact:</legend>
+        
+            <label for="prenom">* Prénom :</label>
+            <input type="text" id="prenom" name="prenom" placeholder="John" required><br>
+
+            <label for="nom">* Nom :</label>
+            <input type="text" id="nom" name="nom" placeholder="Doe" required><br><br>
+
+            <label for="numTel" required>* Numéro de Téléphone :</label>
+            <input type="text" id="numTel" name="numTel" placeholder="1234567890" pattern="\d{10,10}" required><br><br>
+
+            <label for="adresse">* Adresse :</label>
+            <input type="text" id="adresse" name="adresse" placeholder="Badric  Way, 3359" required><br>
+
+            <label for="ville">* Ville :</label>
+            <input type="text" id="ville" name="ville" placeholder="Indianapolis" required>
+                
+        </fieldset>
+
+
+        <!-- Spécifications de la pizza -->
+        <fieldset id="specPizza">
+            <legend>Spécifications de la pizza:</legend>
+                
+            <label for="croute">Sélection Croûte (1) :</label>
+            <select id="croute" name="croute" required>
+                {% for row in croute %}
+                <option value="{{ row['id'] }}">{{ row['type_croute'] }}</option>
+                {% endfor %}
+            </select>
+            
+            <br>
+
+            <label for="sauce">Sélection Sauce (1) :</label>
+            <select id="sauce" name="sauce" required>
+                {% for row in sauce %}
+                <option value="{{ row['id'] }}">{{ row['type_sauce'] }}</option>
+                {% endfor %}
+            </select>     
+
+            <!-- Spécifications des garnitures -->
+            <fieldset id="specGarnitures">
+                <legend>Choix des garnitures (1-4):</legend>
+                
+                <select id="garniture1" name="garniture1" required>
+                    {% for row in garniture %}
+                    <option value="{{ row['id'] }}">{{ row['type_garniture'] }}</option>
+                    {% endfor %}
+                </select>    
+
+                <select id="garniture2" name="garniture2" required>
+                    <option value="0">Aucun</option>
+                    {% for row in garniture %}
+                    <option value="{{ row['id'] }}">{{ row['type_garniture'] }}</option>
+                    {% endfor %}
+                </select>   
+
+                <select id="garniture3" name="garniture3" required>
+                    <option value="0">Aucun</option>
+                    {% for row in garniture %}
+                    <option value="{{ row['id'] }}">{{ row['type_garniture'] }}</option>
+                    {% endfor %}
+                </select>   
+
+                <select id="garniture4" name="garniture4" required>
+                    <option value="0">Aucun</option>
+                    {% for row in garniture %}
+                    <option value="{{ row['id'] }}">{{ row['type_garniture'] }}</option>
+                    {% endfor %}
+                </select>   
+            </fieldset>
+        </fieldset>
+        
+        <input type="submit" value="Envoyez la commande !">
+    </form>
+
+    <a href="/"><button>Retour à l'accueil</button></a>
+</body>
+</html>

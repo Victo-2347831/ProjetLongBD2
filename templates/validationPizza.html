@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traitement de la commande</title>
+</head>
+<body>
+    <h1>COMMANDE ENVOYÉ AVEC SUCCÈS !</h1>
+    <fieldset id="resumeCommande">
+        <legend>Résumé de la commande :</legend>
+        <!-- Informations de contact -->
+        <fieldset id=infoContact>
+            <legend>Informations de contact:</legend>
+        
+            <h3>Identifiant Client : {{clientID}}</h3>
+
+            <h3>Nom Complet : {{prenom}} {{nom}}</h3>
+
+            <h3>Numéro de téléphone : {{numTel}}</h3>
+            
+            <h3>Adresse : {{adresse}}, {{ville}}</h3>
+        </fieldset>
+
+        <!-- Informations de la pizzas -->
+        <fieldset id=infoContact>
+            <legend>Informations de pizza:</legend>
+            <h3>Croute :  {{crouteNom['type_croute']}} </h3>
+            <h3>Sauce : {{sauceNom['type_sauce']}} </h3>
+            <h3>Garnitures : {{garnituresNom['garnitures']}} </h3>
+                    
+        </fieldset>
+    <a href="/listecommande"><button>Accéder à la liste des commandes</button></a>
+    </fieldset>
+
+    <a href="/"><button>Retour à l'accueil</button></a>
+</body>
+</html>

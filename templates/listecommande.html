@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande | Pizzeria Felicio</title>
+</head>
+
+<style>
+    table, th, td {
+      border:1px solid black;
+    }
+</style>
+
+<body>
+    <table>
+        <tr>    <th>ID</th>
+                <th colspan="3">Pizza</th>
+                <th colspan="2">Client</th>
+                <th colspan="3">Gestion Livraison</th>
+        </tr>
+
+        <tr>
+            <!-- BALISE ID -->
+            <th></th>
+
+            <!-- PIZZA -->
+            <th>Croute</th>
+            <th>Sauce</th>
+            <th>Garnitures</th>
+
+            <!-- CLIENT -->
+            <th>Nom Complet</th>
+            <th>Date de la commande</th>
+
+            <!-- LIVRAISON -->
+            <th>Adresse</th>
+            <th>Ville</th>
+        </tr>
+
+        {% for row in commande %}
+        <tr>
+            <td>{{ row['id']}}</td>
+            <td>{{ row['type_croute'] }}</td>
+            <td>{{ row['type_sauce'] }}</td>
+            <td>{{ row['garnitures'] }}</td>
+            <td>{{ row['nom'] }}, {{ row['prenom']}}</td>
+            <td>{{ row['date']}}</td>
+            <td>{{ row['adresse']}}</td>
+            <td>{{ row['ville']}}</td>
+
+            <td>
+                <form action="/retirerPizza" method="post">
+                    <input type="hidden" id="commande_id" name="commande_id" value="{{ row['id'] }}">
+                    <button type="submit">Finaliser commande</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <a href="/"><button>Retour à l'accueil</button></a>
+</body>
+</html>
